@@ -1,0 +1,16 @@
+<div class="col-md-8 offset-md-3">
+  <h3> Create Student </h3>
+  <form (ngSubmit) = "onSubmit()">
+
+    <div class="form-group">
+      <label> Student Name</label>
+      <input type="text" class ="form-control" id = "name"
+             [(ngModel)] = "student.name" name = "name">
+    </div>
+    <div>
+      <button class = "btn btn-success" type ="submit">Save</button>
+    </div>
+
+
+  </form>
+</div>

@@ -1,0 +1,18 @@
+<h3> View Employee Details</h3>
+<div>
+  <div>
+    <label> <b>  Name: </b></label> {{student.name}}
+  </div>
+</div>
+
+<table class = "table table-striped">
+  <thead>
+  <tr>
+    <th> Courses Student has registered</th>
+  </tr>
+  </thead>
+  <tr *ngFor = "let course of courses" >
+    <td> {{ course.course }} </td>
+  </tr>
+
+</table>
