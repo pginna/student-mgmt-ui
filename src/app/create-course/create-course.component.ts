@@ -1,42 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import {Student} from '../student';
+import {Course} from '../course';
 import {StudentService} from '../student.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-create-student',
-  templateUrl: './create-student.component.html',
-  styleUrls: ['./create-student.component.css']
+  selector: 'app-create-course',
+  templateUrl: './create-course.component.html',
+  styleUrls: ['./create-course.component.css']
 })
-export class CreateStudentComponent implements OnInit {
-
-  student: Student = new Student();
+export class CreateCourseComponent implements OnInit {
+  course: Course = new Course();
   error: any;
   constructor(private studentService: StudentService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+
   // tslint:disable-next-line:typedef
-  saveStudent(){
-    this.studentService.createStudent(this.student).subscribe( data =>{
+  saveCourse(){
+    this.studentService.createCourse(this.course).subscribe( data =>{
         console.log(data);
-        this.goToStudentList();
+        this.goToCourseList();
       },
       (err: any) => this.error = err,
       () => console.log('All done saving '));
   }
 
   // tslint:disable-next-line:typedef
-  goToStudentList(){
-    this.router.navigate(['/students']);
+  goToCourseList(){
+    this.router.navigate(['/courses']);
   }
-
-
 
   // tslint:disable-next-line:typedef
   onSubmit(){
-    console.log(this.student);
-    this.saveStudent();
+    console.log(this.course);
+    this.saveCourse();
   }
 }

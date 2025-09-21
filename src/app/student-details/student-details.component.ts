@@ -25,7 +25,7 @@ export class StudentDetailsComponent implements OnInit {
       this.student = data;
     });
 
-    this.studentService.getCoursesList(this.id).subscribe(data => {
+    this.studentService.getCoursesByStudent(this.id).subscribe(data => {
         this.courses = data;
       });
 

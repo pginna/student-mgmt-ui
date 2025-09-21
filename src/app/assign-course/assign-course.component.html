@@ -1,0 +1,27 @@
+<form [formGroup]="assignForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="selectedStudent">Select a Student:</label>
+    <select id="selectedStudent" formControlName="selectedStudent" class="form-control">
+      <option value="">-- Choose a student --</option>
+      <option *ngFor="let student of students" [value]="student.id">
+        {{ student.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="selectedCourse">Select a Course:</label>
+    <select id="selectedCourse" formControlName="selectedCourse" class="form-control">
+      <option value="">-- Choose a course --</option>
+      <option *ngFor="let course of courses" [value]="course.id">
+        {{ course.course }}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!assignForm.valid">Assign Course</button>
+</form>
+
+<hr>
+
+

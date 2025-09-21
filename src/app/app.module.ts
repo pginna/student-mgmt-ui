@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './student-list/student-list.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import { CreateStudentComponent } from './create-student/create-student.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateStudentComponent } from './update-student/update-student.component';
-import { DeleteStudentComponent } from './delete-student/delete-student.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
+import {ErrorInterceptor} from './error-interceptor';
+import { CreateCourseComponent } from './create-course/create-course.component';
+import { CourseListComponent } from './course-list/course-list.component';
+import { AssignCourseComponent } from './assign-course/assign-course.component';
 
 @NgModule({
   declarations: [
@@ -17,17 +20,26 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
     StudentListComponent,
     CreateStudentComponent,
     UpdateStudentComponent,
-    DeleteStudentComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    CreateCourseComponent,
+    CourseListComponent,
+    AssignCourseComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true // Essential for allowing multiple interceptors
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

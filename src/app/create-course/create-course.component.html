@@ -11,22 +11,15 @@
       </div>
     </div>
   </div>
-  <h3> Create Student </h3>
+  <h3> Create Course </h3>
   <form (ngSubmit) = "onSubmit()">
 
     <div class="form-group">
-      <label> Student Name :</label>
+      <label> Course Name :</label>
       <input type="text" class ="form-control" id = "name"
-             [(ngModel)] = "student.name" name = "name">
-      <label> Email: </label>
-      <input type="text" class ="form-control" id = "email"
-             [(ngModel)] = "student.email" name = "email">
-
-      <label> Phone: </label>
-      <input type="text" class ="form-control" id = "Phone"
-             [(ngModel)] = "student.phone" name = "phone">
+             [(ngModel)] = "course.course" name = "name">
     </div>
-    <div> </div>
+
     <div>
       <button class = "btn btn-success" type ="submit">Save</button>
     </div>
@@ -35,3 +28,4 @@
 
   </form>
 </div>
+

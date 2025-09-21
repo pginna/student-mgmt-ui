@@ -9,32 +9,49 @@ import {Course} from './course';
 })
 export class StudentService {
 
-  private baseUrl = 'http://localhost:8084/api/v1/students';
+  private studentUrl = 'http://localhost:8084/api/v1/students';
 
-  private getCoursesUrl = 'http://localhost:8084/api/v1/courses';
+  private coursesUrl = 'http://localhost:8084/api/v1/courses';
+  private baseUrl = 'http://localhost:8084/api/v1';
   constructor(private httpClient: HttpClient) { }
 
   getStudentList(): Observable<Student[]>{
-    return this.httpClient.get<Student[]>(`${this.baseUrl}`);
+    return this.httpClient.get<Student[]>(`${this.studentUrl}`);
   }
   // tslint:disable-next-line:ban-types
   createStudent(student: Student): Observable<Object>{
-    return this.httpClient.post(`${this.baseUrl}`, student);
+    return this.httpClient.post(`${this.studentUrl}`, student);
   }
   getStudentById(id: number): Observable<Student>{
-    return this.httpClient.get<Student>(`${this.baseUrl}/${id}`);
+    return this.httpClient.get<Student>(`${this.studentUrl}/${id}`);
   }
   // tslint:disable-next-line:ban-types
   updateStudent(id: number, student: Student): Observable<Object>{
-    return this.httpClient.put(`${this.baseUrl}/${id}`, student);
+    return this.httpClient.put(`${this.studentUrl}/${id}`, student);
   }
 
   // tslint:disable-next-line:ban-types
   deleteStudent(id: number): Observable<Object>{
-    return this.httpClient.delete(`${this.baseUrl}/${id}`);
+    return this.httpClient.delete(`${this.studentUrl}/${id}`);
   }
 
-  getCoursesList(id: number): Observable<Course[]>{
-    return this.httpClient.get<Course[]>(`${this.getCoursesUrl}/${id}`);
+  getCoursesByStudent(id: number): Observable<Course[]>{
+    return this.httpClient.get<Course[]>(`${this.coursesUrl}/${id}`);
   }
+
+  // tslint:disable-next-line:ban-types
+  createCourse(course: Course): Observable<Object>{
+    return this.httpClient.post(`${this.coursesUrl}`, course);
+  }
+
+  getCourses(): Observable<Course[]>{
+    return this.httpClient.get<Course[]>(`${this.coursesUrl}`);
+  }
+
+  assignCourse(studentId: number, courseId: number): Observable<Student>{
+    // @ts-ignore
+    //alert(`${this.baseUrl}/${studentId}/course/${courseId}`);
+    return this.httpClient.put<Student>(`${this.baseUrl}/${studentId}/course/${courseId}`);
+  }
+
 }
