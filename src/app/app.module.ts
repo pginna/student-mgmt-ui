@@ -13,6 +13,7 @@ import {ErrorInterceptor} from './error-interceptor';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { CourseListComponent } from './course-list/course-list.component';
 import { AssignCourseComponent } from './assign-course/assign-course.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AssignCourseComponent } from './assign-course/assign-course.component';
     StudentDetailsComponent,
     CreateCourseComponent,
     CourseListComponent,
-    AssignCourseComponent
+    AssignCourseComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

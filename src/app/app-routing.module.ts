@@ -7,17 +7,20 @@ import {StudentDetailsComponent} from './student-details/student-details.compone
 import {CreateCourseComponent} from './create-course/create-course.component';
 import {CourseListComponent} from './course-list/course-list.component';
 import {AssignCourseComponent} from './assign-course/assign-course.component';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './auth.guard';
 
 
 const routes: Routes = [
-  {path: 'students', component: StudentListComponent},
+  {path: 'students', component: StudentListComponent, canActivate: [AuthGuard]},
   {path: 'create-student', component: CreateStudentComponent},
   {path: 'update-student/:id', component: UpdateStudentComponent},
   {path: 'student-details/:id', component: StudentDetailsComponent},
   {path: 'create-course', component: CreateCourseComponent},
   {path: 'courses', component: CourseListComponent},
   {path: 'assign-course', component: AssignCourseComponent},
-  {path: '', redirectTo: 'students', pathMatch: 'full'}
+  {path: 'login', component: LoginComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({
